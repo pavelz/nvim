@@ -1,0 +1,26 @@
+{
+  "suggest.noselect": true,
+  "solargraph.commandPath": "/Users/pavel/.rvm/gems/ruby-2.6.5@insta/bin/solargraph",
+  "solargraph.useBundler": true,
+  "solargraph.bundlerPath": "/Users/pavel/.rvm/rubies/ruby-2.6.5/bin/bundle",
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  },
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ]
+}
