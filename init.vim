@@ -1,7 +1,7 @@
 
 set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
 
-set mouse=a
+  set mouse=a
   set tabstop=2
   set shiftwidth=2
   set smartindent
@@ -50,7 +50,7 @@ set mouse=a
   nnoremap <Leader>h <C-w><Left>
   nnoremap <Leader>j <C-w><Down>
   nnoremap <Leader>k <C-w><Up>
-  nnoremap <Leader>s :update<CR>
+  "nnoremap <Leader>s :update<CR>
   nmap <leader>w :tabnext
   nmap <leader>q :tabprev
 
@@ -63,7 +63,10 @@ set mouse=a
   vmap <leader>c "+y<CR>
   vmap <leader>x "+x<CR>
 
-  
+  " Files
+  nnoremap <Space>v :BufExplorer <CR>
+  nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
+  nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
 
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
@@ -74,6 +77,7 @@ set mouse=a
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set background=dark " or light
 
+  let $BAT_THEME='lucid'
   autocmd VimEnter * colorscheme lucid
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
@@ -129,3 +133,13 @@ nmap <c-w>z :call zoom#toggle()<CR>
 au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile mix.lock set filetype=elixir
+
+let NERDTreeShowHidden=1
+
+"if executable('opam')
+  "let g:opamshare=substitute(system('opam var share'),'\n$','','''')
+  "if isdirectory(g:opamshare."/merlin/vim")
+    "execute "set rtp+=" . g:opamshare."/merlin/vim"
+  "endif
+"endif
+

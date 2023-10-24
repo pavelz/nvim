@@ -5,14 +5,27 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'tpope/vim-haml'
   Plug 'slim-template/vim-slim'
   Plug 'clojure-vim/clojure.vim'
-  
+  Plug 'tpope/vim-salve'
+  Plug 'tpope/vim-fireplace'
+  "Plug 'tpope/vim-dispatch'
+  Plug 'tpope/vim-projectionist'
+
+  Plug 'luochen1990/rainbow'
+  Plug 'Yggdroot/indentLine'
+  "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'sheerun/vim-polyglot'
+
+  Plug 'Olical/conjure'
+  Plug 'guns/vim-sexp',    {'for': 'clojure'}
+
 
   Plug 'udalov/kotlin-vim'
   Plug 'vim-scripts/utl.vim'
   Plug 'tpope/vim-speeddating'
   Plug 'jceb/vim-orgmode'
 
-  Plug 'jremmen/vim-ripgrep'
+  "Plug 'jremmen/vim-ripgrep'
   Plug 'jlanzarotta/bufexplorer'
 
   Plug 'tpope/vim-fugitive'
@@ -29,7 +42,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'itchyny/lightline.vim'
   Plug 'mbbill/undotree'
 
-  Plug 'neoclide/coc.nvim', {'branch': 'release'} ", 'tag': '*', 'do': { -> coc#util#install()}}
+  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} 
   Plug 'MaxMEllon/vim-jsx-pretty'
 
 
@@ -40,9 +53,13 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+
+  Plug 'jlanzarotta/bufexplorer'
+
   Plug 'scrooloose/nerdtree'
 
   Plug 'elixir-editors/vim-elixir'
+  Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
@@ -51,7 +68,7 @@ call plug#begin('~/.config/nvim/bundle')
   "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }" Unite replacement
   "Plug 'zchee/deoplete-jedi' " Python static analysis engine
   "Plug 'ervandew/supertab'
-  "Plug 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
   Plug 'tpope/vim-repeat'
   
   Plug 'janko-m/vim-test'
@@ -65,11 +82,11 @@ call plug#begin('~/.config/nvim/bundle')
 
   Plug 'gabrielelana/vim-markdown'
 
-  if $GOPATH != ""
-    Plug 'zchee/deoplete-go', { 'do': 'make'}
-    Plug 'fatih/vim-go'
-    Plug 'rhysd/vim-go-impl'
-  endif
+ " if $GOPATH != ""
+    "Plug 'zchee/deoplete-go', { 'do': 'make'}
+    "Plug 'fatih/vim-go'
+    "Plug 'rhysd/vim-go-impl'
+ " endif
   Plug 'timonv/vim-cargo'
   Plug 'neoclide/coc-rls'
   Plug 'rust-lang/rust.vim'
@@ -83,12 +100,12 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'honza/dockerfile.vim'
   
   Plug 'vim-scripts/rfc-syntax', { 'for': 'rfc' }
-  Plug 'cespare/vim-toml'
+  Plug 'cespare/vim-toml', {'branch': 'main'}
   Plug 'leafgarland/typescript-vim', { 'for': 'ts' } " TypeScript
   Plug 'tomlion/vim-solidity', { 'for': 'solidity' } " ETH
 
-  Plug 'arakashic/nvim-colors-solarized'
-  Plug 'whatyouhide/vim-gotham'
+  "Plug 'arakashic/nvim-colors-solarized'
+  Plug 'whatyouhide/vim-gotham', {'branch': 'main'}
 
   Plug 'mhartington/oceanic-next'
   Plug 'baeuml/summerfruit256.vim'
@@ -99,9 +116,11 @@ call plug#begin('~/.config/nvim/bundle')
     \ }
 
 
+
   if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
   endif
+
 call plug#end()
 " LangServer sample config:  Required for operations modifying multiple buffers like rename.
     "set hidden
@@ -119,6 +138,23 @@ call plug#end()
     "nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
     "autocmd FileType ruby setlocal omnifunc=LanguageClient#complete
 
+" rainbow parens
+  let g:rainbow_active = 1
+" fzf stuffs
+  let $FZF_DEFAULT_OPTS = '--reverse'
+  nnoremap <Leader>x :History<CR>
+  let g:fzf_layout = { 'down':  '40%' }
+
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep('rg --smart-case --line-number --no-heading --color=always --colors "path:fg:93,169,245" --colors "line:fg:128,128,128" --colors "match:fg:195,232,141" --no-hidden --ignore ' . shellescape(<q-args>),
+    \ 0,
+    \ fzf#vim#with_preview({'options': '-e --delimiter : --nth 3..'}),
+    \ <bang>0)
+
+"command! -bang -nargs=? -complete=dir Files
+    "\ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+
 " rusty-tags setup
   " make test commands execute using dispatch.vim
   let test#strategy = "vimux"
@@ -127,7 +163,7 @@ call plug#end()
   autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 " COC config 
-  let g:coc_global_extensions = [ 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph' ]
+  let g:coc_global_extensions = [ 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
 
   " Better display for messages
   set cmdheight=2
@@ -154,6 +190,13 @@ call plug#end()
   " Use K for show documentation in preview window
   nnoremap K :call <SID>show_documentation()<CR>
 
+  "let c = getchar()
+  function! Fofo()
+    coc#select_confirm()
+  endfunction
+  " Make <CR> to accept selected completion item or notify coc.nvim to format
+  " <C-g>u breaks current undo, please make your own choice
+  inoremap <expr> <Tab> coc#pum#confirm()
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -170,19 +213,21 @@ call plug#end()
       return v:true
     endif
 
-  let ret = execute("silent! normal \<C-]>")
-  if ret =~ "Error" || ret =~ "错误"
-    call searchdecl(expand('<cword>'))
-  endif
-endfunction
+    let ret = execute("silent! normal \<C-]>")
+    if ret =~ "Error" || ret =~ "错误"
+      call searchdecl(expand('<cword>'))
+    endif
+  endfunction
 
+nmap <silent> " :call CocActionAsync('doHover')<CR>
 nmap <silent> gd :call <SID>GoToDefinition()<CR>
 
 " Coc Cusoms
 let g:coc_disable_startup_warning = 1
 
 " NERDTree settings
-
+" Nerdtree
+  nnoremap <silent> <Leader>m :NERDTreeFind<CR>
   nnoremap <Leader>a :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
   nnoremap <Leader>g :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
   nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
@@ -192,14 +237,14 @@ let g:coc_disable_startup_warning = 1
 
   let g:limelight_conceal_ctermfg='darkgray'
 
-" deoplete config
+"" deoplete config
 
-  let g:deoplete#enable_at_startup = 1
-  " disable autocomplete
-  let g:deoplete#disable_auto_complete = 1
-  " deoplete go
-  set completeopt+=noinsert
-  set completeopt+=noselect
+  "let g:deoplete#enable_at_startup = 1
+  "" disable autocomplete
+  "let g:deoplete#disable_auto_complete = 1
+  "" deoplete go
+  "set completeopt+=noinsert
+  "set completeopt+=noselect
 
   "inoremap <silent><expr><C-b> deoplete#mappings#manual_complete()
 
@@ -245,6 +290,8 @@ let g:coc_disable_startup_warning = 1
 
 " ctrlp 
     nnoremap <C-s> :CtrlPBuffer<CR>
+    nnoremap <leader>s :CtrlPBuffer<CR>
+    nnoremap <leader>p :CtrlPBuffer<CR>
     let g:ctrlp_cmd = 'CtrlPMixed' " Search all the things.
     let g:ctrlp_working_path_mode = 'ra' " Nearest ancestor
     let g:ctrlp_mruf_max = 25
@@ -275,10 +322,12 @@ let g:coc_disable_startup_warning = 1
     nmap <c-f> :Files<CR>
 
 
-  "RUBY FOLDING
+" RUBY FOLDING
 " these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
 nmap <silent> \rf :TestNearest<CR>
 nmap <silent> \rb :TestFile<CR>
 nmap <silent> \ra :TestSuite<CR>
 nmap <silent> \rl :TestLast<CR>
 nmap <silent> \ro :TestVisit<CR>
+
+

@@ -5,12 +5,33 @@
   "solargraph.bundlerPath": "/Users/pavel/.rvm/rubies/ruby-2.6.5/bin/bundle",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
+  "elixir.pathToElixirLS": "~/.config/nvim/bundle/coc-elixir/elixir-ls/release/language_server.sh",
 
   "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
+    },
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": [
+        ".stack.yaml",
+        ".hie-bios",
+        "BUILD.bazel",
+        "cabal.config",
+        "package.yaml",
+        "hie.yaml",
+        "*.cabal",
+        "stack.yaml"
+      ],
+      "filetypes": ["hs", "lhs", "haskell"]
+    },
+    "ocaml": {
+      "command": "ocamllsp",
+      "args": ["--stdio"],
+      "filetypes": ["ocaml", "reason"]
     }
   },
 
