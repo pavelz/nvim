@@ -143,3 +143,8 @@ let NERDTreeShowHidden=1
   "endif
 "endif
 
+au FileType rust
+    \ hi Special guifg=#00ff00 |
+    \ hi PreProc guifg=#00ffff |
+
+hi Comment guifg=#00ff00
