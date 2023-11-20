@@ -1,8 +1,6 @@
 {
   "suggest.noselect": true,
-  "solargraph.commandPath": "/Users/pavel/.rvm/gems/ruby-2.6.5@insta/bin/solargraph",
   "solargraph.useBundler": true,
-  "solargraph.bundlerPath": "/Users/pavel/.rvm/rubies/ruby-2.6.5/bin/bundle",
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "elixir.pathToElixirLS": "~/.config/nvim/bundle/coc-elixir/elixir-ls/release/language_server.sh",

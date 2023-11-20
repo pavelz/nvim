@@ -42,8 +42,11 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'itchyny/lightline.vim'
   Plug 'mbbill/undotree'
 
-  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} 
+  Plug 'neoclide/dfoc.nvim', {'tag': 'v0.0.82'} 
+  Plug 'yaegassy/coc-pylsp', {'do': 'yarn install --frozen-lockfile'}
   Plug 'MaxMEllon/vim-jsx-pretty'
+
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
   Plug 'junegunn/limelight.vim'
@@ -183,6 +186,10 @@ call plug#end()
   nmap <silent> <leader>lt <Plug>(coc-type-definition)
   nmap <silent> <leader>li <Plug>(coc-implementation)
   nmap <silent> <leader>lf <Plug>(coc-references)
+  
+  " reformat code
+  nmap <leader>f  <Plug>(coc-format-selected)
+  vmap <leader>f  <Plug>(coc-format-selected)
 
   " Remap for rename current word
   nmap <leader>lr <Plug>(coc-rename)
