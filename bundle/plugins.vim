@@ -42,12 +42,12 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'itchyny/lightline.vim'
   Plug 'mbbill/undotree'
 
-  Plug 'neoclide/dfoc.nvim', {'tag': 'v0.0.82'} 
+  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} 
   Plug 'yaegassy/coc-pylsp', {'do': 'yarn install --frozen-lockfile'}
   Plug 'MaxMEllon/vim-jsx-pretty'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+  Plug 'nvim-treesitter/playground'
 
   Plug 'junegunn/limelight.vim'
   Plug 'junegunn/goyo.vim'
@@ -63,6 +63,7 @@ call plug#begin('~/.config/nvim/bundle')
 
   Plug 'elixir-editors/vim-elixir'
   Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+  Plug 'Shougo/echodoc.vim'
 
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
@@ -188,15 +189,15 @@ call plug#end()
   nmap <silent> <leader>lf <Plug>(coc-references)
   
   " reformat code
-  nmap <leader>f  <Plug>(coc-format-selected)
-  vmap <leader>f  <Plug>(coc-format-selected)
+  nmap <leader>F  <Plug>(coc-format-selected)
+  vmap <leader>F  <Plug>(coc-format-selected)
 
   " Remap for rename current word
   nmap <leader>lr <Plug>(coc-rename)
 
   " Use K for show documentation in preview window
   nnoremap K :call <SID>show_documentation()<CR>
-
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   "let c = getchar()
   function! Fofo()
     coc#select_confirm()
@@ -338,3 +339,4 @@ nmap <silent> \rl :TestLast<CR>
 nmap <silent> \ro :TestVisit<CR>
 
 
+hi Comment guifg=#00ff00

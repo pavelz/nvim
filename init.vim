@@ -22,6 +22,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   autocmd bufnewfile,bufread *.jsx set filetype=javascript.jsx
 
   "set autochdir
+  filetype plugin on
 
   filetype indent on
 
@@ -41,6 +42,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost $MYVIMRC hi Comment ctermfg=green
   augroup END " }
 
 
@@ -81,11 +83,13 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   autocmd VimEnter * colorscheme lucid
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
+
 " folding
 set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+
 " Formatting everything
 map <leader>r gg=G<C-o>
 
@@ -143,8 +147,21 @@ let NERDTreeShowHidden=1
   "endif
 "endif
 
-au FileType rust
-    \ hi Special guifg=#00ff00 |
-    \ hi PreProc guifg=#00ffff |
+augroup mygroup
+  au!
+  au FileType rust
+      \ hi Special guifg=#00ff00
+      \ hi PreProc guifg=#00ffff 
 
-hi Comment guifg=#00ff00
+augroup END
+
+augroup vimmer
+  au!
+  au FileType,SourceCmd vim highlight Comment guifg=#00ff00
+  au FileType,SourceCmd vim highlight Special guifg=#ff6666
+
+  au StdinReadPost  *.vim highlight Comment guifg=#00ff00
+augroup END
+
+highlight Comment guifg=#00ff00
+
