@@ -9,6 +9,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'tpope/vim-fireplace'
   "Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-projectionist'
+  Plug 'easymotion/vim-easymotion'
 
   Plug 'luochen1990/rainbow'
   Plug 'Yggdroot/indentLine'
@@ -30,7 +31,7 @@ call plug#begin('~/.config/nvim/bundle')
 
   Plug 'tpope/vim-fugitive'
   Plug 'gregsexton/gitv'
-  Plug 'airblade/vim-gitgutter'
+  Plug 'airblade/vim-gitgutter', {'branch': 'main'}
 
 
   Plug 'benekastah/neomake' " for linters and other jobs
@@ -62,7 +63,6 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'scrooloose/nerdtree'
 
   Plug 'elixir-editors/vim-elixir'
-  Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
   Plug 'Shougo/echodoc.vim'
 
   Plug 'scrooloose/nerdcommenter'
@@ -126,6 +126,11 @@ call plug#begin('~/.config/nvim/bundle')
   endif
 
 call plug#end()
+
+" COC autocomplet
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " LangServer sample config:  Required for operations modifying multiple buffers like rename.
     "set hidden
 
@@ -167,7 +172,7 @@ call plug#end()
   autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 " COC config 
-  let g:coc_global_extensions = [ 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
+  let g:coc_global_extensions = [ 'coc-elixir', 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
 
   " Better display for messages
   set cmdheight=2
@@ -298,8 +303,7 @@ let g:coc_disable_startup_warning = 1
 
 " ctrlp 
     nnoremap <C-s> :CtrlPBuffer<CR>
-    nnoremap <leader>s :CtrlPBuffer<CR>
-    nnoremap <leader>p :CtrlPBuffer<CR>
+    nmap <leader>s :CtrlPBuffer<CR>
     let g:ctrlp_cmd = 'CtrlPMixed' " Search all the things.
     let g:ctrlp_working_path_mode = 'ra' " Nearest ancestor
     let g:ctrlp_mruf_max = 25

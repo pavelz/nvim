@@ -42,7 +42,6 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
-    autocmd BufWritePost $MYVIMRC hi Comment ctermfg=green
   augroup END " }
 
 
@@ -147,21 +146,20 @@ let NERDTreeShowHidden=1
   "endif
 "endif
 
-augroup mygroup
-  au!
-  au FileType rust
-      \ hi Special guifg=#00ff00
-      \ hi PreProc guifg=#00ffff 
+"augroup mygroup
+  "au!
+  "au FileType rust
+      "\ hi Special guifg=#00ff00
+      "\ hi PreProc guifg=#00ffff 
 
-augroup END
+"augroup END
 
-augroup vimmer
-  au!
-  au FileType,SourceCmd vim highlight Comment guifg=#00ff00
-  au FileType,SourceCmd vim highlight Special guifg=#ff6666
+"augroup vimmer
+  "au!
+  "au FileType,SourceCmd vim highlight Comment guifg=#00ff00
+  "au FileType,SourceCmd vim highlight Special guifg=#ff6666
 
-  au StdinReadPost  *.vim highlight Comment guifg=#00ff00
-augroup END
+  "au StdinReadPost  *.vim highlight Comment guifg=#00ff00
+"augroup END
 
-highlight Comment guifg=#00ff00
 

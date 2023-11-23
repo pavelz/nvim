@@ -3,7 +3,7 @@
   "solargraph.useBundler": true,
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "elixir.pathToElixirLS": "~/.config/nvim/bundle/coc-elixir/elixir-ls/release/language_server.sh",
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "coc.preferences.echodocSupport": true,
 
   "languageserver": {
