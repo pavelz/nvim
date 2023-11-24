@@ -304,7 +304,7 @@ let g:coc_disable_startup_warning = 1
 " ctrlp 
     nnoremap <C-s> :CtrlPBuffer<CR>
     nmap <leader>s :CtrlPBuffer<CR>
-    let g:ctrlp_cmd = 'CtrlPMixed' " Search all the things.
+    "let g:ctrlp_cmd = 'CtrlPMixed' " Search all the things.
     let g:ctrlp_working_path_mode = 'ra' " Nearest ancestor
     let g:ctrlp_mruf_max = 25
     let g:ctrlp_custom_ignore = {
