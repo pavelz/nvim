@@ -163,3 +163,5 @@ let NERDTreeShowHidden=1
 "augroup END
 
 
+highlight Special guifg=#ff6666
+hi Comment guifg=#00ff00

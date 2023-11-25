@@ -131,6 +131,8 @@ call plug#end()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
+
 " LangServer sample config:  Required for operations modifying multiple buffers like rename.
     "set hidden
 
@@ -209,7 +211,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
   endfunction
   " Make <CR> to accept selected completion item or notify coc.nvim to format
   " <C-g>u breaks current undo, please make your own choice
-  inoremap <expr> <Tab> coc#pum#confirm()
   function! s:show_documentation()
     if &filetype == 'vim'
       execute 'h '.expand('<cword>')
@@ -343,4 +344,3 @@ nmap <silent> \rl :TestLast<CR>
 nmap <silent> \ro :TestVisit<CR>
 
 
-hi Comment guifg=#00ff00

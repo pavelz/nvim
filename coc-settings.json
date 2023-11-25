@@ -1,10 +1,8 @@
 {
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "solargraph.useBundler": true,
-  "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
-  "coc.preferences.echodocSupport": true,
 
   "languageserver": {
     "golang": {
