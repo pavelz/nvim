@@ -31,7 +31,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   let g:python2_host_prog = '/usr/bin/python'
   let g:python3_host_prog = '/usr/local/bin/python3'
 
-  let mapleader = " "
+  let tapleader = " "
   source $DOTFILES_PATH/.config/nvim/autoload/plug.vim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
@@ -42,6 +42,8 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
+    autocmd BufWritePost $MYVIMRC hi Comment guifg=#00ff00
+    autocmd BufWritePost $MYVIMRC hi Special guifg=#ff6666
   augroup END " }
 
 
@@ -78,8 +80,11 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set background=dark " or light
 
-  let $BAT_THEME='lucid'
-  autocmd VimEnter * colorscheme lucid
+  au VimEnter,SourcePost * 
+        \ colorscheme lucid |
+        \ highlight Comment guifg=#00ff00 |
+
+  au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
 
@@ -146,21 +151,19 @@ let NERDTreeShowHidden=1
   "endif
 "endif
 
-"augroup mygroup
-  "au!
-  "au FileType rust
-      "\ hi Special guifg=#00ff00
-      "\ hi PreProc guifg=#00ffff 
+augroup mygroup
+  au!
+  au FileType rust
+      \ hi Special guifg=#00ff00
+      \ hi PreProc guifg=#00ffff 
 
-"augroup END
+augroup END
 
-"augroup vimmer
-  "au!
-  "au FileType,SourceCmd vim highlight Comment guifg=#00ff00
-  "au FileType,SourceCmd vim highlight Special guifg=#ff6666
+augroup vimmer
+  au!
+  au FileType,SourceCmd vim highlight Comment guifg=#00ff00
+  au FileType,SourceCmd vim highlight Special guifg=#ff6666
 
-  "au StdinReadPost  *.vim highlight Comment guifg=#00ff00
-"augroup END
+augroup END
 
 
-highlight Special guifg=#ff6666
