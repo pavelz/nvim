@@ -128,10 +128,10 @@ call plug#begin('~/.config/nvim/bundle')
 call plug#end()
 
 " COC autocomplet
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+autocmd VimEnter * inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
+autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
 
 " LangServer sample config:  Required for operations modifying multiple buffers like rename.
     "set hidden
@@ -344,3 +344,6 @@ nmap <silent> \rl :TestLast<CR>
 nmap <silent> \ro :TestVisit<CR>
 
 
+
+
+hi Comment guifg=#00ff00

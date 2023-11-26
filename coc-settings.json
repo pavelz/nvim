@@ -1,5 +1,5 @@
 {
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "solargraph.useBundler": true,
   "suggest.maxCompleteItemCount": 20,
   "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",

@@ -164,4 +164,3 @@ let NERDTreeShowHidden=1
 
 
 highlight Special guifg=#ff6666
-hi Comment guifg=#00ff00
