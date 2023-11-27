@@ -31,7 +31,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   let g:python2_host_prog = '/usr/bin/python'
   let g:python3_host_prog = '/usr/local/bin/python3'
 
-  let tapleader = " "
+  let mapleader = " "
   source $DOTFILES_PATH/.config/nvim/autoload/plug.vim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
@@ -46,6 +46,12 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
     autocmd BufWritePost $MYVIMRC hi Special guifg=#ff6666
   augroup END " }
 
+  augroup entering
+    au!
+    autocmd VimEnter hi Comment guifg=#00ff00 |  hi Special guifg=#ff6666
+    autocmd VimEnter echom "HEY"
+  augroup END
+ hi Special guifg=#ff6666
 
 " hjkl extened moves
 
@@ -83,6 +89,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   au VimEnter,SourcePost * 
         \ colorscheme lucid |
         \ highlight Comment guifg=#00ff00 |
+        \ hi Special guifg=#ff6666 |
 
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
@@ -151,19 +158,18 @@ let NERDTreeShowHidden=1
   "endif
 "endif
 
-augroup mygroup
-  au!
-  au FileType rust
-      \ hi Special guifg=#00ff00
-      \ hi PreProc guifg=#00ffff 
+"augroup mygroup
+  "au!
+  "au FileType rust
+      "\ hi Special guifg=#00ff00
+      "\ hi PreProc guifg=#00ffff 
 
-augroup END
+"augroup END
 
-augroup vimmer
-  au!
-  au FileType,SourceCmd vim highlight Comment guifg=#00ff00
-  au FileType,SourceCmd vim highlight Special guifg=#ff6666
+"augroup vimmer
+  "au!
+  "au FileType,SourceCmd vim highlight Comment guifg=#00ff00
+  "au FileType,SourceCmd vim highlight Special guifg=#ff6666
+"augroup END
 
-augroup END
-
-
+nmap <silent> XX :qa!<CR>
