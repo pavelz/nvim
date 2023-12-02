@@ -127,6 +127,10 @@ call plug#begin('~/.config/nvim/bundle')
 
 call plug#end()
 
+" indent divider
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
 " COC autocomplet
 autocmd VimEnter * inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -239,7 +243,7 @@ nmap <silent> gd :call <SID>GoToDefinition()<CR>
 " Coc Cusoms
 let g:coc_disable_startup_warning = 1
 
-" NERDTree settings
+:" NERDTree settings
 " Nerdtree
   nnoremap <silent> <Leader>m :NERDTreeFind<CR>
   nnoremap <Leader>a :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
