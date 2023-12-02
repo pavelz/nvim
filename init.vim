@@ -90,6 +90,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
         \ colorscheme lucid |
         \ highlight Comment guifg=#00ff00 |
         \ hi Special guifg=#ff6666 |
+        \ hi Conceal guifg=#444444 |
 
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
