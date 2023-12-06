@@ -206,9 +206,6 @@ autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#nex
   " Remap for rename current word
   nmap <leader>lr <Plug>(coc-rename)
 
-  " Use K for show documentation in preview window
-  nnoremap K :call <SID>show_documentation()<CR>
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
   "let c = getchar()
   function! Fofo()
     coc#select_confirm()
