@@ -178,7 +178,7 @@ autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#nex
   autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 " COC config 
-  let g:coc_global_extensions = [ 'coc-elixir', 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
+  let g:coc_global_extensions = [ 'coc-conjure', 'coc-elixir', 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
 
   " Better display for messages
   set cmdheight=2
