@@ -1,4 +1,29 @@
 call plug#begin('~/.config/nvim/bundle')
+  " nvim-cmp
+  Plug 'neovim/nvim-lspconfig', { 'branch': 'main'}
+  Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
+  Plug 'hrsh7th/cmp-buffer', { 'branch': 'main'}
+  Plug 'hrsh7th/cmp-path', { 'branch': 'main'}
+  Plug 'hrsh7th/cmp-cmdline', { 'branch': 'main'}
+  Plug 'hrsh7th/nvim-cmp', { 'branch': 'main'}
+
+  " For vsnip users.
+  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
+
+  " For luasnip users.
+  " Plug 'L3MON4D3/LuaSnip'
+  " Plug 'saadparwaiz1/cmp_luasnip'
+
+  " For ultisnips users.
+  " Plug 'SirVer/ultisnips'
+  " Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+  " For snippy users.
+  " Plug 'dcampos/nvim-snippy'
+  " Plug 'dcampos/cmp-snippy'
+
+
   Plug 'honza/vim-snippets'
 
   Plug 'dhruvasagar/vim-zoom'
@@ -43,8 +68,8 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'itchyny/lightline.vim'
   Plug 'mbbill/undotree'
 
-  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} 
-  Plug 'yaegassy/coc-pylsp', {'do': 'yarn install --frozen-lockfile'}
+"  Plug 'neoclide/coc.nvim', {'tag': 'v0.0.82'} 
+"  Plug 'yaegassy/coc-pylsp', {'do': 'yarn install --frozen-lockfile'}
   Plug 'MaxMEllon/vim-jsx-pretty'
 
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -92,7 +117,7 @@ call plug#begin('~/.config/nvim/bundle')
     "Plug 'rhysd/vim-go-impl'
  " endif
   Plug 'timonv/vim-cargo'
-  Plug 'neoclide/coc-rls'
+  "Plug 'neoclide/coc-rls'
   Plug 'rust-lang/rust.vim'
 
   Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
@@ -132,8 +157,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 
 " COC autocomplet
-autocmd VimEnter * inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"autocmd VimEnter * inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
 
@@ -177,68 +202,68 @@ autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#nex
   autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
   autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-" COC config 
-  let g:coc_global_extensions = [ 'coc-conjure', 'coc-elixir', 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
+"" COC config 
+  "let g:coc_global_extensions = [ 'coc-conjure', 'coc-elixir', 'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-pairs', 'coc-solargraph', 'coc-clojure' ]
 
-  " Better display for messages
-  set cmdheight=2
-  " Smaller updatetime for CursorHold & CursorHoldI
-  set updatetime=300
-  " don't give |ins-completion-menu| messages.
-  set shortmess+=c
-  " always show signcolumns
-  set signcolumn=yes
+  "" Better display for messages
+  "set cmdheight=2
+  "" Smaller updatetime for CursorHold & CursorHoldI
+  "set updatetime=300
+  "" don't give |ins-completion-menu| messages.
+  "set shortmess+=c
+  "" always show signcolumns
+  "set signcolumn=yes
 
-  " Use `lp` and `ln` for navigate diagnostics
-  nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
-  nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
+  "" Use `lp` and `ln` for navigate diagnostics
+  "nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
+  "nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
 
-  " Remap keys for gotos
-  nmap <silent> <leader>ld <Plug>(coc-definition)
-  nmap <silent> <leader>lt <Plug>(coc-type-definition)
-  nmap <silent> <leader>li <Plug>(coc-implementation)
-  nmap <silent> <leader>lf <Plug>(coc-references)
+  "" Remap keys for gotos
+  "nmap <silent> <leader>ld <Plug>(coc-definition)
+  "nmap <silent> <leader>lt <Plug>(coc-type-definition)
+  "nmap <silent> <leader>li <Plug>(coc-implementation)
+  "nmap <silent> <leader>lf <Plug>(coc-references)
   
-  " reformat code
-  nmap <leader>F  <Plug>(coc-format-selected)
-  vmap <leader>F  <Plug>(coc-format-selected)
+  "" reformat code
+  "nmap <leader>F  <Plug>(coc-format-selected)
+  "vmap <leader>F  <Plug>(coc-format-selected)
 
-  " Remap for rename current word
-  nmap <leader>lr <Plug>(coc-rename)
+  "" Remap for rename current word
+  "nmap <leader>lr <Plug>(coc-rename)
 
-  "let c = getchar()
-  function! Fofo()
-    coc#select_confirm()
-  endfunction
-  " Make <CR> to accept selected completion item or notify coc.nvim to format
-  " <C-g>u breaks current undo, please make your own choice
-  function! s:show_documentation()
-    if &filetype == 'vim'
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
+  ""let c = getchar()
+  "function! Fofo()
+    "coc#select_confirm()
+  "endfunction
+  "" Make <CR> to accept selected completion item or notify coc.nvim to format
+  "" <C-g>u breaks current undo, please make your own choice
+  "function! s:show_documentation()
+    "if &filetype == 'vim'
+      "execute 'h '.expand('<cword>')
+    "else
+      "call CocAction('doHover')
+    "endif
+  "endfunction
 
-  " Highlight symbol under cursor on CursorHold
-  autocmd CursorHold * silent call CocActionAsync('highlight')
-  " GoTODefintions
-  function! s:GoToDefinition()
-    if CocAction('jumpDefinition')
-      return v:true
-    endif
+  "" Highlight symbol under cursor on CursorHold
+  "autocmd CursorHold * silent call CocActionAsync('highlight')
+  "" GoTODefintions
+  "function! s:GoToDefinition()
+    "if CocAction('jumpDefinition')
+      "return v:true
+    "endif
 
-    let ret = execute("silent! normal \<C-]>")
-    if ret =~ "Error" || ret =~ "错误"
-      call searchdecl(expand('<cword>'))
-    endif
-  endfunction
+    "let ret = execute("silent! normal \<C-]>")
+    "if ret =~ "Error" || ret =~ "错误"
+      "call searchdecl(expand('<cword>'))
+    "endif
+  "endfunction
 
-nmap <silent> " :call CocActionAsync('doHover')<CR>
-nmap <silent> gd :call <SID>GoToDefinition()<CR>
+"nmap <silent> " :call CocActionAsync('doHover')<CR>
+"nmap <silent> gd :call <SID>GoToDefinition()<CR>
 
-" Coc Cusoms
-let g:coc_disable_startup_warning = 1
+"" Coc Cusoms
+"let g:coc_disable_startup_warning = 1
 
 :" NERDTree settings
 " Nerdtree

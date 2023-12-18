@@ -36,6 +36,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
 
+  lua require('plug')
 " to hack on conf at all times
 
   nnoremap <silent> <leader>' :tabedit ~/.config/nvim/bundle/plugins.vim<CR>:vsp ~/.config/nvim/init.vim<CR>
