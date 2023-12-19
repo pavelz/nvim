@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/bundle')
-  " nvim-cmp
-  Plug 'neovim/nvim-lspconfig', { 'branch': 'main'}
+  " nvim-
+  Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
   Plug 'hrsh7th/cmp-buffer', { 'branch': 'main'}
   Plug 'hrsh7th/cmp-path', { 'branch': 'main'}
@@ -8,7 +8,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'hrsh7th/nvim-cmp', { 'branch': 'main'}
 
   " For vsnip users.
-  Plug 'hrsh7th/cmp-vsnip'
+  Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main'}
   Plug 'hrsh7th/vim-vsnip'
 
   " For luasnip users.
