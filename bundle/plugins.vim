@@ -1,5 +1,6 @@
 call plug#begin('~/.config/nvim/bundle')
   " nvim-
+  Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
   Plug 'hrsh7th/cmp-buffer', { 'branch': 'main'}
@@ -120,7 +121,7 @@ call plug#begin('~/.config/nvim/bundle')
   "Plug 'neoclide/coc-rls'
   Plug 'rust-lang/rust.vim'
 
-  Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
+  "Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
   Plug 'hail2u/vim-css3-syntax'
   Plug 'othree/yajs.vim', { 'for': 'javascript' }
   Plug 'kchmck/vim-coffee-script'
@@ -151,6 +152,9 @@ call plug#begin('~/.config/nvim/bundle')
   endif
 
 call plug#end()
+
+
+" colorizer lua path fix
 
 " indent divider
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -368,8 +372,6 @@ nmap <silent> \rb :TestFile<CR>
 nmap <silent> \ra :TestSuite<CR>
 nmap <silent> \rl :TestLast<CR>
 nmap <silent> \ro :TestVisit<CR>
-
-
 
 
 hi Comment guifg=#00ff00

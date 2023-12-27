@@ -66,3 +66,8 @@
   require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
     capabilities = capabilities
   }
+
+
+require 'lspconfig'.racket_langserver.setup{}
+
+require 'colorizer'.setup()
