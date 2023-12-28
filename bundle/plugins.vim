@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/bundle')
-  " nvim-
-  Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer'}
+
+  Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer', 'for': ['css', 'scss', 'sass'] }
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
   Plug 'hrsh7th/cmp-buffer', { 'branch': 'main'}
