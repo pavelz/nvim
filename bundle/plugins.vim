@@ -154,7 +154,6 @@ call plug#begin('~/.config/nvim/bundle')
 call plug#end()
 
 
-" colorizer lua path fix
 
 " indent divider
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
