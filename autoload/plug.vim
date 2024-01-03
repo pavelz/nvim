@@ -332,6 +332,11 @@ function! plug#end()
   endfor
 
   call s:reorg_rtp()
+  for path in split(&rtp, ',')
+    if isdirectory(path . '/lua')
+      let &packpath = &packpath . ',' . path . '/lua' 
+    endif
+  endfor
   filetype plugin indent on
   if has('vim_starting')
     if has('syntax') && !exists('g:syntax_on')
