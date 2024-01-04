@@ -70,6 +70,5 @@
 
 require 'lspconfig'.racket_langserver.setup{}
 
-package.path = package.path .. ';/Users/pavel/.config/nvim/bundle/colorizer/lua/?.lua'
 
 require 'colorizer'.setup()
