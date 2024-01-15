@@ -70,5 +70,4 @@
 
 require 'lspconfig'.racket_langserver.setup{}
 
-
 require 'colorizer'.setup()

@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/bundle')
 
-  Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer', 'for': ['css', 'scss', 'sass'] }
+  Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
   Plug 'hrsh7th/cmp-buffer', { 'branch': 'main'}
@@ -37,7 +37,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'tpope/vim-projectionist'
   Plug 'easymotion/vim-easymotion'
 
-  Plug 'luochen1990/rainbow'
+"  Plug 'luochen1990/rainbow'
   Plug 'Yggdroot/indentLine'
   "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ryanoasis/vim-devicons'
@@ -122,7 +122,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'rust-lang/rust.vim'
 
   "Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass'] }
-  Plug 'hail2u/vim-css3-syntax'
+  "Plug 'hail2u/vim-css3-syntax'
   Plug 'othree/yajs.vim', { 'for': 'javascript' }
   Plug 'kchmck/vim-coffee-script'
   Plug 'othree/html5.vim'

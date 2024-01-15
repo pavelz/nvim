@@ -9,6 +9,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
 
   set number
   syntax on
+  colorscheme lucid
 
   let $DOTFILES_PATH='~'
   set guicursor= "fix for broken neovim
@@ -87,11 +88,11 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set background=dark " or light
 
-  au VimEnter,SourcePost * 
-        \ colorscheme lucid |
-        \ highlight Comment guifg=#00ff00 |
-        \ hi Special guifg=#ff6666 |
-        \ hi Conceal guifg=#444444 |
+"  au VimEnter,SourcePost * 
+        "\ colorscheme lucid |
+        "\ highlight Comment guifg=#00ff00 |
+        "\ hi Special guifg=#ff6666 |
+        "\ hi Conceal guifg=#444444 |
 
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
