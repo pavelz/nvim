@@ -76,6 +76,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
   nnoremap <silent> \g :silent w !open https://google.com/search\?q\=<C-R>=expand('<cword>')<CR><CR>
+  nnoremap <silent> \h :help <C-R>=expand('<cword>')<CR><CR>
 
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
