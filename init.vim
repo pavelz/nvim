@@ -35,7 +35,6 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   source $DOTFILES_PATH/.config/nvim/autoload/plug.vim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
-  lua require('plug')
 " to hack on conf at all times
 
   nnoremap <silent> <leader>' :tabedit ~/.config/nvim/bundle/plugins.vim<CR>:vsp ~/.config/nvim/init.vim<CR>
@@ -76,6 +75,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   nnoremap <Space>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
+  nnoremap <silent> \g :silent w !open https://google.com/search\?q\=<C-R>=expand('<cword>')<CR><CR>
 
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
@@ -174,3 +174,6 @@ let NERDTreeShowHidden=1
 "augroup END
 
 nmap <silent> XX :qa!<CR>
+
+
+lua require('plug')

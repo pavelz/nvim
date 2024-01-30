@@ -93,12 +93,12 @@ call plug#begin('~/.config/nvim/bundle')
 
   Plug 'scrooloose/nerdcommenter'
   Plug 'majutsushi/tagbar'
-  Plug 'Shougo/neosnippet.vim'
+  "Plug 'Shougo/neosnippet.vim'
   "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   "Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }" Unite replacement
   "Plug 'zchee/deoplete-jedi' " Python static analysis engine
   "Plug 'ervandew/supertab'
-  Plug 'SirVer/ultisnips'
+  "Plug 'SirVer/ultisnips'
   Plug 'tpope/vim-repeat'
   
   Plug 'janko-m/vim-test'
@@ -163,7 +163,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "autocmd VimEnter * inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
 "                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
+"autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<C-N>"
 
 " LangServer sample config:  Required for operations modifying multiple buffers like rename.
     "set hidden
@@ -272,8 +272,8 @@ autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#nex
 " Nerdtree
   nnoremap <silent> <Leader>m :NERDTreeFind<CR>
   nnoremap <Leader>a :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
-  nnoremap <Leader>g :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
   nnoremap <silent> <Leader>d :NERDTreeToggle<CR>
+  nnoremap <Leader>g :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
   let NERDTreeMapPreview = 'w'
   let NERDTreeWinSize = 50
 " limelight conf
@@ -309,22 +309,22 @@ autocmd VimEnter * inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#nex
 
 " neosnippet
 
-  imap <C-k> <Right><Plug>(neosnippet_expand_or_jump)
-  smap <C-k> <Right><Plug>(neosnippet_expand_or_jump)
+  "imap <C-k> <Right><Plug>(neosnippet_expand_or_jump)
+  "smap <C-k> <Right><Plug>(neosnippet_expand_or_jump)
 
-  " Use honza's snippets.
-  let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
+"  " Use honza's snippets.
+  "let g:neosnippet#snippets_directory='~/.config/nvim/bundle/vim-snippets/snippets'
 
-  " Enable neosnippet snipmate compatibility mode
-  let g:neosnippet#enable_snipmate_compatibility = 1
+  "" Enable neosnippet snipmate compatibility mode
+  "let g:neosnippet#enable_snipmate_compatibility = 1
 
-  " Disable runtime snippets
-  let g:neosnippet#disable_runtime_snippets = { "_": 1, }
+  "" Disable runtime snippets
+  "let g:neosnippet#disable_runtime_snippets = { "_": 1, }
 
-  " For snippet_complete marker.
-  if has('conceal')
-      set conceallevel=2 concealcursor=i
-  endif
+  "" For snippet_complete marker.
+  "if has('conceal')
+      "set conceallevel=2 concealcursor=i
+  "endif
 
   " Disable the neosnippet preview candidate window
   " When enabled, there can be too much visual noise
