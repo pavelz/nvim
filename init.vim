@@ -62,6 +62,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   nmap <leader>w :tabnext
   nmap <leader>q :tabprev
 
+  nnoremap <Leader>Z :bd<CR>
 " clear search results
   nnoremap <Leader>/ :noh<CR>
 

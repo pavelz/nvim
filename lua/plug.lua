@@ -36,7 +36,6 @@
       { name = 'buffer' },
     })
   })
-  vim.print(cmp.mapping.preset.insert())
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
@@ -72,6 +71,7 @@
   --}
 
 require 'lspconfig'.racket_langserver.setup{}
+require 'lspconfig'.gopls.setup{}
 require 'lspconfig'.solargraph.setup{}
 require 'lspconfig'.hls.setup{}
 
