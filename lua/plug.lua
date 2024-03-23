@@ -1,6 +1,10 @@
   -- Set up nvim-cmp.
   local cmp = require'cmp'
 
+  file = io.open( "/Users/pavel/vim-logger.log", "w+b")
+  file:setvbuf("line") -- set line level buffering
+
+
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -20,7 +24,7 @@
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['C-N'] = function ()
-        vim.print("JAY")
+        file:write("JAY\n")
       end,
       ['<C-e>'] = cmp.mapping.abort(),
       ['<C-y>'] = cmp.config.disable,
@@ -76,3 +80,6 @@ require 'lspconfig'.solargraph.setup{}
 require 'lspconfig'.hls.setup{}
 
 require 'colorizer'.setup()
+
+file:write("HEY\n")
+

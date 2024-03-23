@@ -1,4 +1,6 @@
 
+redir! >~/vim.txt
+
 set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
 
   set mouse=a
@@ -36,6 +38,8 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
 " to hack on conf at all times
+
+  nnoremap \\ za
 
   nnoremap <silent> <leader>' :tabedit ~/.config/nvim/bundle/plugins.vim<CR>:vsp ~/.config/nvim/init.vim<CR>
   augroup reload_vimrc " {
