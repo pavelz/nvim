@@ -1,5 +1,10 @@
 
-redir! >~/vim.txt
+function! Log(text)
+  redir >> /Users/pavel/vim-logger.log
+  echo a:text
+  redir END
+endfunction
+
 
 set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
 
@@ -57,7 +62,6 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
  hi Special guifg=#ff6666
 
 " hjkl extened moves
-
   nnoremap <Leader>l <C-w><Right>
   nnoremap <Leader>h <C-w><Left>
   nnoremap <Leader>j <C-w><Down>
