@@ -31,6 +31,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'tpope/vim-haml'
   Plug 'slim-template/vim-slim'
   Plug 'clojure-vim/clojure.vim'
+  Plug 'PaterJason/cmp-conjure'
   Plug 'tpope/vim-salve'
   Plug 'tpope/vim-fireplace'
   "Plug 'tpope/vim-dispatch'
@@ -44,6 +45,8 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'sheerun/vim-polyglot'
 
   Plug 'Olical/conjure'
+  Plug 'radenling/vim-dispatch-neovim'
+
   Plug 'guns/vim-sexp',    {'for': 'clojure'}
 
 

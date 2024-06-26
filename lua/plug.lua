@@ -74,12 +74,174 @@
     --capabilities = capabilities
   --}
 
+
+local map = function(type, key, value)
+	vim.api.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
+end
+
+local custom_attach = function(client)
+	print("LSP started.");
+
+	map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
+	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
+	map('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
+	map('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
+	map('n','gs','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+	map('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+	map('n','gt','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+	map('n','<leader>gw','<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+	map('n','<leader>gW','<cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
+	map('n','<leader>ah','<cmd>lua vim.lsp.buf.hover()<CR>')
+	map('n','<leader>af','<cmd>lua vim.lsp.buf.code_action()<CR>')
+	map('n','<leader>ee','<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>')
+	map('n','<leader>ar','<cmd>lua vim.lsp.buf.rename()<CR>')
+	map('n','<leader>=', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+	map('n','<leader>ai','<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
+	map('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
+end
+
+
+
 require 'lspconfig'.racket_langserver.setup{}
-require 'lspconfig'.gopls.setup{}
-require 'lspconfig'.solargraph.setup{}
+require 'lspconfig'.gopls.setup{on_attach = custom_attach}
+require 'lspconfig'.solargraph.setup{on_attach = custom_attach}
 require 'lspconfig'.hls.setup{}
+require 'lspconfig'.clojure_lsp.setup{}
 
 require 'colorizer'.setup()
 
-file:write("HEY\n")
 
+local popUp = {}
+
+logFile = io.open("/Users/pavel/vim-logger.log", "a+b")
+logFile:setvbuf("line")
+
+function tableToString(t, indent)
+    if(type(t) ~= "table") then
+      return t 
+    end
+    local formatted = {}
+    indent = indent or 0
+
+    for key, value in pairs(t) do
+        local valueType = type(value)
+        local padding = string.rep("  ", indent)  -- Padding for nested tables
+        if valueType == 'table' then
+            table.insert(formatted, padding .. key .. " = {")
+            table.insert(formatted, tableToString(value, indent + 1))
+            table.insert(formatted, padding .. "},")
+        else
+            table.insert(formatted, padding .. key .. " = " .. tostring(value) .. ",")
+        end
+    end
+
+    return table.concat(formatted, "\n")
+end
+
+strtrim = function(text)
+  local s = 1
+  for i = 1, #text do
+    if not char.is_white(string.byte(text, i)) then
+      s = i
+      break
+    end
+  end
+
+  local e = #text
+  for i = #text, 1, -1 do
+    if not char.is_white(string.byte(text, i)) then
+      e = i
+      break
+    end
+  end
+  if s == 1 and e == #text then
+    return text
+  end
+  return string.sub(text, s, e)
+end
+
+popUp.popUpDoc = function()
+  local M = {}
+  
+  local function create_float_window(contents)
+    local bufnr = vim.api.nvim_create_buf(false, true)
+    local winnr = vim.api.nvim_open_win(bufnr, false, {
+        relative = 'cursor',
+        row = 1,
+        col = 0,
+        width = 100,
+        height = 40,
+        style = 'minimal',
+        border = 'single',
+      })
+    logFile:write("\nCO:\n")
+    logFile:write(tableToString(contents[1]["value"]))
+    logFile:write("\n")
+
+    vim.lsp.util.stylize_markdown(bufnr, contents[1]["value"].split("\n"), {max_width=100, max_height=40})
+    vim.api.nvim_buf_set_option(bufnr, 'bufhidden', 'wipe')
+    --vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, contents)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', '<cmd>bw!<CR>', {
+        silent = true,
+        noremap = true,
+        nowait = true,
+      })
+
+    vim.api.nvim_set_current_win(winnr)
+  end
+
+  function M.show_hover_docs()
+    local params = vim.lsp.util.make_position_params()
+    params.textDocument = { uri = vim.uri_from_bufnr(0) }
+    params.position = { line = vim.fn.line('.') - 1, character = vim.fn.col('.') - 1 }
+
+    local result = vim.lsp.buf_request_sync(0, 'textDocument/hover', params, 100000)
+    logFile:write("lsp table:\n")
+    logFile:write(tableToString(result))
+    logFile:write("\ntable:\n")
+    --logFile:write(tableToString(result[1].result.contents))
+    logFile:write("\n")
+    if not result or not result[1] or not result[1].result or vim.tbl_isempty(result[1].result.contents) then
+      print('No hover information available')
+      return
+    end
+
+    local contents = {}
+    logFile:write("ITERATTE!\n")
+    logFile:write(tableToString(result))
+    logFile:write(type(result[1].result.contents))
+    logFile:write(tableToString(result[1].result.contents))
+    logFile:write("\n")
+    local content = result[1].result.contents
+      if content.kind == 'markdown' then
+        table.insert(contents, {kind = 'markdown', value = content.value})
+      end
+    
+    logFile:write("\nConents\n")
+    logFile:write(tableToString(contents))
+    logFile:write("\n")
+
+    create_float_window(contents)
+  end
+
+  return M
+end
+
+popUp.lofi = function()
+  vim.api.nvim_command([[
+  nnoremap <silent> <leader>h :lua require('plug').popUpDoc()<CR>
+  ]])
+end
+
+local cmp_status, cmp = pcall(require, 'cmp')
+if not cmp_status then
+  return
+end
+
+vim.api.nvim_create_augroup('my_cmp_group', {})
+vim.api.nvim_create_autocmd('InsertEnter', {
+  group = 'my_cmp_group',
+  callback = popUp.lofi,
+})
+
+return popUp

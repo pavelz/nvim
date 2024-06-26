@@ -6,7 +6,7 @@ function! Log(text)
 endfunction
 
 
-set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
+  set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
 
   set mouse=a
   set tabstop=2
@@ -71,6 +71,7 @@ set runtimepath+=~/.vim-plugins/LanguageClient-neovim
   nmap <leader>q :tabprev
 
   nnoremap <Leader>Z :bd<CR>
+  nnoremap CC :bd<CR>
 " clear search results
   nnoremap <Leader>/ :noh<CR>
 
@@ -160,7 +161,7 @@ au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile mix.lock set filetype=elixir
 
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
 
 "if executable('opam')
   "let g:opamshare=substitute(system('opam var share'),'\n$','','''')
