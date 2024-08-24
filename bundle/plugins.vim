@@ -28,6 +28,8 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'honza/vim-snippets'
 
   Plug 'dhruvasagar/vim-zoom'
+  "Plug 'embear/vim-foldsearch'
+  "Plug 'nvimdev/lspsaga.nvim'
   Plug 'tpope/vim-haml'
   Plug 'slim-template/vim-slim'
   Plug 'clojure-vim/clojure.vim'
@@ -42,7 +44,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'Yggdroot/indentLine'
   "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ryanoasis/vim-devicons'
-  Plug 'sheerun/vim-polyglot'
+"  Plug 'sheerun/vim-polyglot'
 
   Plug 'Olical/conjure'
   Plug 'radenling/vim-dispatch-neovim'
@@ -143,10 +145,10 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'mhartington/oceanic-next'
   Plug 'baeuml/summerfruit256.vim'
 
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+"  Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
 
 
 

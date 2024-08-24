@@ -80,7 +80,7 @@ local map = function(type, key, value)
 end
 
 local custom_attach = function(client)
-	print("LSP started.");
+	print("LSP started.")
 
 	map('n','gD','<cmd>lua vim.lsp.buf.declaration()<CR>')
 	map('n','gd','<cmd>lua vim.lsp.buf.definition()<CR>')
@@ -100,11 +100,27 @@ local custom_attach = function(client)
 	map('n','<leader>ao','<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
 end
 
-
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+vim.lsp.handlers.hover, {
+  -- Use a sharp border with `FloatBorder` highlights
+  border = "single",
+  -- add the title in hover float window
+  title = "hover"
+}
+)
 
 require 'lspconfig'.racket_langserver.setup{}
 require 'lspconfig'.gopls.setup{on_attach = custom_attach}
-require 'lspconfig'.solargraph.setup{on_attach = custom_attach}
+require 'lspconfig'.solargraph.setup(
+                                      {
+                                        on_attach = custom_attach,
+                                        solargraph = {
+                                          formatting = false,
+                                          useBundler = true,
+                                          diagnostics = true, -- lsp diagnostics are slow
+                                        },
+                                      }
+                                      )
 require 'lspconfig'.hls.setup{}
 require 'lspconfig'.clojure_lsp.setup{}
 
@@ -174,13 +190,14 @@ popUp.popUpDoc = function()
         style = 'minimal',
         border = 'single',
       })
+
     logFile:write("\nCO:\n")
     logFile:write(tableToString(contents[1]["value"]))
     logFile:write("\n")
 
     vim.lsp.util.stylize_markdown(bufnr, contents[1]["value"].split("\n"), {max_width=100, max_height=40})
     vim.api.nvim_buf_set_option(bufnr, 'bufhidden', 'wipe')
-    --vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, contents)
+    -- vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, contents)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<Esc>', '<cmd>bw!<CR>', {
         silent = true,
         noremap = true,
@@ -201,6 +218,7 @@ popUp.popUpDoc = function()
     logFile:write("\ntable:\n")
     --logFile:write(tableToString(result[1].result.contents))
     logFile:write("\n")
+
     if not result or not result[1] or not result[1].result or vim.tbl_isempty(result[1].result.contents) then
       print('No hover information available')
       return
@@ -243,5 +261,8 @@ vim.api.nvim_create_autocmd('InsertEnter', {
   group = 'my_cmp_group',
   callback = popUp.lofi,
 })
+
+
+--require('lspsaga').setup({})
 
 return popUp
