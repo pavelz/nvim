@@ -1,5 +1,5 @@
 call plug#begin('~/.config/nvim/bundle')
-
+  Plug 'mg979/vim-visual-multi'
   Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer'}
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/cmp-nvim-lsp', { 'branch': 'main'}
@@ -158,6 +158,8 @@ call plug#begin('~/.config/nvim/bundle')
 
 call plug#end()
 
+" vim-gitgutter
+let g:gitgutter_map_keys = 0
 
 
 " indent divider

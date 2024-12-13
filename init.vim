@@ -62,19 +62,22 @@ endfunction
  hi Special guifg=#ff6666
 
 " hjkl extened moves
-  nnoremap <Leader>l <C-w><Right>
-  nnoremap <Leader>h <C-w><Left>
-  nnoremap <Leader>j <C-w><Down>
-  nnoremap <Leader>k <C-w><Up>
+  nnoremap <leader>l <C-w><Right>
+  nnoremap <leader>h <C-w><Left>
+  nnoremap <leader>j <C-w><Down>
+  nnoremap <leader>k <C-w><Up>
   "nnoremap <Leader>s :update<CR>
   nmap <leader>w :tabnext
   nmap <leader>q :tabprev
+
+" gitgutter
+  nnoremap <leader>uh :GitGutterHunkUndo<CR>
 
   nnoremap <Leader>Z :bd<CR>
   nnoremap CC :bd<CR>
 " clear search results
   nnoremap <Leader>/ :noh<CR>
-
+  nnoremap <Leader>\ :fzf<CR>
 " copy paste
 
   nmap <leader>v "+gP<CR>
@@ -85,7 +88,7 @@ endfunction
   nnoremap <Space>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
-  nnoremap <silent> \g :silent w !open https://google.com/search\?q\=<C-R>=expand('<cword>')<CR><CR>
+  nnoremap <silent> \g :silent w !open https://google.com/search\?q\=<C-R>=expand('<cWORD>')<CR><CR>
   nnoremap <silent> \h :help <C-R>=expand('<cword>')<CR><CR>
 
 " ngrep browse results
@@ -192,3 +195,5 @@ lua require('plug')
 
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=100}
 
+" make PageUp work expected way
+"nnoremap <PageUp> gkHzz

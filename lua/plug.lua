@@ -121,7 +121,7 @@ require 'lspconfig'.solargraph.setup(
                                         },
                                       }
                                       )
-require 'lspconfig'.hls.setup{}
+require 'lspconfig'.hls.setup{on_attach = custom_attach}
 require 'lspconfig'.clojure_lsp.setup{}
 
 require 'colorizer'.setup()
@@ -247,7 +247,7 @@ end
 
 popUp.lofi = function()
   vim.api.nvim_command([[
-  nnoremap <silent> <leader>h :lua require('plug').popUpDoc()<CR>
+  nnoremap <silent> <leader>i :lua =vim.lsp.buf.hover()<CR>
   ]])
 end
 
