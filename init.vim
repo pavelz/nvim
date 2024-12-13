@@ -88,7 +88,7 @@ endfunction
   nnoremap <Space>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
-  nnoremap <silent> \g :silent w !open https://google.com/search\?q\=<C-R>=expand('<cWORD>')<CR><CR>
+  nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \h :help <C-R>=expand('<cword>')<CR><CR>
 
 " ngrep browse results
