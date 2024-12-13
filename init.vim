@@ -87,9 +87,10 @@ endfunction
   " Files
   nnoremap <Space>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
-  nnoremap <Leader>f :FZF -q <C-r>=expand('<cword>')<CR><CR>
+  nnoremap <Leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+  nnoremap <Leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
-  nnoremap <silent> \h :help <C-R>=expand('<cword>')<CR><CR>
+  nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
 
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
