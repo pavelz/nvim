@@ -80,9 +80,9 @@ endfunction
   nnoremap <Leader>\ :fzf<CR>
 " copy paste
 
-  nmap <leader>v "+gP<CR>
-  vmap <leader>c "+y<CR>
-  vmap <leader>x "+x<CR>
+  nmap <Leader>v "+gP
+  vmap <Leader>c "+y
+  vmap <Leader>x "+x
 
   " Files
   nnoremap <Space>v :BufExplorer <CR>
