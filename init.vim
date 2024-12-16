@@ -70,6 +70,9 @@ endfunction
   nmap <leader>w :tabnext
   nmap <leader>q :tabprev
 
+" jump symmetry
+  nnoremap <S-Tab> <C-o>
+
 " gitgutter
   nnoremap <leader>uh :GitGutterHunkUndo<CR>
 
