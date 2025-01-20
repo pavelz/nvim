@@ -42,10 +42,12 @@ endfunction
   source $DOTFILES_PATH/.config/nvim/autoload/plug.vim
   source $DOTFILES_PATH/.config/nvim/bundle/plugins.vim
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
-" to hack on conf at all times
+
+  " b is kind of far to navigate backward and forward
+  nnoremap e b
 
   nnoremap \\ za
-
+" to hack on conf at all times
   nnoremap <silent> <leader>' :tabedit ~/.config/nvim/bundle/plugins.vim<CR>:vsp ~/.config/nvim/init.vim<CR>
   augroup reload_vimrc " {
     autocmd!
