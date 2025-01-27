@@ -44,7 +44,7 @@ endfunction
   source $DOTFILES_PATH/.config/nvim/shortcuts.vim
 
   " b is kind of far to navigate backward and forward
-  nnoremap e b
+  nnoremap q b
 
   nnoremap \\ za
 " to hack on conf at all times
@@ -83,13 +83,13 @@ endfunction
 " clear search results
   nnoremap <Leader>/ :noh<CR>
   nnoremap <Leader>\ :fzf<CR>
-" copy paste
 
+" copy paste
   nmap <Leader>v "+gP
   vmap <Leader>c "+y
   vmap <Leader>x "+x
 
-  " Files
+" Files
   nnoremap <Space>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
@@ -100,6 +100,7 @@ endfunction
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
   nnoremap <Leader>b :cprev<CR>`
+
 " colors
   set termguicolors " need this to get decent colors
 
