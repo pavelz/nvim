@@ -45,6 +45,9 @@ endfunction
 
   " b is kind of far to navigate backward and forward
   nnoremap q b
+  " f is forward in some contexts like less this could be go
+  nnoremap f w
+
 
   nnoremap \\ za
 " to hack on conf at all times

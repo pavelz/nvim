@@ -1,3 +1,4 @@
+
 call plug#begin('~/.config/nvim/bundle')
   Plug 'mg979/vim-visual-multi'
   Plug 'NvChad/nvim-colorizer.lua', {'as': 'colorizer'}
@@ -11,6 +12,7 @@ call plug#begin('~/.config/nvim/bundle')
   " For vsnip users.
   Plug 'hrsh7th/cmp-vsnip', { 'branch': 'main'}
   Plug 'hrsh7th/vim-vsnip'
+  Plug 'wakatime/vim-wakatime'
 
   " For luasnip users.
   " Plug 'L3MON4D3/LuaSnip'
