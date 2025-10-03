@@ -99,7 +99,12 @@ endfunction
   nnoremap <Leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
-
+" show LSP syntax diagnostic
+  lua << EOL
+  vim.keymap.set("n", "<leader><Esc>", function()
+    vim.diagnostic.open_float(nil, { scope = "cursor", border = "rounded" })
+  end, { desc = "Show diagnostic at cursor" })
+EOL
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
   nnoremap <Leader>b :cprev<CR>`
