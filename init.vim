@@ -5,6 +5,8 @@ function! Log(text)
   redir END
 endfunction
 
+" danger will robinson!
+set exrc
 
   set runtimepath+=~/.vim-plugins/LanguageClient-neovim 
 
