@@ -83,6 +83,10 @@ set exrc
 " gitgutter
   nnoremap <leader>uh :GitGutterHunkUndo<CR>
 
+
+  nnoremap <Leader>z :call zoom#toggle()<CR>
+  " tmux like bind
+  nnoremap <c-w>z :call zoom#toggle()<CR>
   nnoremap <Leader>Z :bd<CR>
   nnoremap CC :bd<CR>
 " clear search results
@@ -171,8 +175,6 @@ map <leader>r gg=G<C-o>
   "set background=light
   "
 
-
-nmap <c-w>z :call zoom#toggle()<CR>
 
 
 " elixir crap
