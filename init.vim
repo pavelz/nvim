@@ -83,6 +83,11 @@ set exrc
 " gitgutter
   nnoremap <leader>uh :GitGutterHunkUndo<CR>
 
+  " from README
+  nnoremap <leader>n :NERDTreeFocus<CR>
+  nnoremap <C-n> :NERDTree<CR>
+  nnoremap <C-t> :NERDTreeToggle<CR>
+  nnoremap <C-f> :NERDTreeFind<CR>
 
   nnoremap <Leader>z :call zoom#toggle()<CR>
   " tmux like bind
