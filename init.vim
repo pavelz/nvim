@@ -112,10 +112,21 @@ set exrc
   nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
 " show LSP syntax diagnostic
   lua << EOL
-  vim.keymap.set("n", "<leader><Esc>", function()
+  vim.keymap.set("n", "<Leader><Esc>", function()
     vim.diagnostic.open_float(nil, { scope = "cursor", border = "rounded" })
   end, { desc = "Show diagnostic at cursor" })
 EOL
+lua << EOL
+vim.keymap.set('n', 'q', function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    if vim.api.nvim_win_get_config(win).relative ~= '' then
+      vim.api.nvim_win_close(win, true)
+      return
+    end
+  end
+end, { desc = 'Close floating window' })   
+EOL
+
 " ngrep browse results
   nnoremap <Leader>n :cnext<CR>
   nnoremap <Leader>b :cprev<CR>`
