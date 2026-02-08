@@ -192,6 +192,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " rainbow parens
   let g:rainbow_active = 1
+
 " fzf stuffs
   let $FZF_DEFAULT_OPTS = '--reverse'
   nnoremap <Leader>x :History<CR>

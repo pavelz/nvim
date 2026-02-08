@@ -95,16 +95,17 @@ set exrc
   nnoremap <Leader>Z :bd<CR>
   nnoremap CC :bd<CR>
 " clear search results
-  nnoremap <Leader>/ :noh<CR>
-  nnoremap <Leader>\ :fzf<CR>
+  nnoremap // :noh<CR>
+  set timeoutlen=200
+  nnoremap <Leader>\ :FZF<CR>
 
 " copy paste
-  nmap <Leader>v "+gP
-  vmap <Leader>c "+y
+  nmap <Leader>p "+gP
+  vmap <Leader>y "+y
   vmap <Leader>x "+x
 
 " Files
-  nnoremap <Space>v :BufExplorer <CR>
+  nnoremap <Leader>v :BufExplorer <CR>
   nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
   nnoremap <Leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <Leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
