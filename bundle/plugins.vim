@@ -286,6 +286,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
   nnoremap <Leader>g :execute bufwinnr('NERD_tree') . 'wincmd w'<CR>
   let NERDTreeMapPreview = 'w'
   let NERDTreeWinSize = 50
+
+
 " limelight conf
 
   let g:limelight_conceal_ctermfg='darkgray'

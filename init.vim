@@ -73,7 +73,7 @@ set exrc
   nnoremap <leader>h <C-w><Left>
   nnoremap <leader>j <C-w><Down>
   nnoremap <leader>k <C-w><Up>
-  "nnoremap <Leader>s :update<CR>
+  "nnoremap <leader>s :update<CR>
   nmap <leader>w :tabnext
   nmap <leader>q :tabprev
 
@@ -89,32 +89,38 @@ set exrc
   nnoremap <C-t> :NERDTreeToggle<CR>
   nnoremap <C-f> :NERDTreeFind<CR>
 
-  nnoremap <Leader>z :call zoom#toggle()<CR>
+  nnoremap <leader>z :call zoom#toggle()<CR>
+
   " tmux like bind
   nnoremap <c-w>z :call zoom#toggle()<CR>
-  nnoremap <Leader>Z :bd<CR>
+  nnoremap <leader>Z :bd<CR>
   nnoremap CC :bd<CR>
+
 " clear search results
   nnoremap // :noh<CR>
   set timeoutlen=200
-  nnoremap <Leader>\ :FZF<CR>
+  nnoremap <leader>\ :FZF<CR>
 
 " copy paste
-  nmap <Leader>p "+gP
-  vmap <Leader>y "+y
-  vmap <Leader>x "+x
+  nmap <leader>p "+gP
+  vmap <leader>y "+y
+  vmap <leader>x "+x
 
 " Files
-  nnoremap <Leader>v :BufExplorer <CR>
-  nnoremap <Leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
-  nnoremap <Leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
-  nnoremap <Leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+  nnoremap <leader>v :BufExplorer <CR>
+  nnoremap <leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
+  nnoremap <leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+  nnoremap <leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \w :!open <cfile><CR>
   nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+lua << EOF
+
+EOF
+
 " show LSP syntax diagnostic
   lua << EOL
-  vim.keymap.set("n", "<Leader><Esc>", function()
+  vim.keymap.set("n", "<leader><Esc>", function()
     vim.diagnostic.open_float(nil, { scope = "cursor", border = "rounded" })
   end, { desc = "Show diagnostic at cursor" })
 EOL
@@ -130,8 +136,8 @@ end, { desc = 'Close floating window' })
 EOL
 
 " ngrep browse results
-  nnoremap <Leader>n :cnext<CR>
-  nnoremap <Leader>b :cprev<CR>`
+  nnoremap <leader>n :cnext<CR>
+  nnoremap <leader>b :cprev<CR>`
 
 " colors
   set termguicolors " need this to get decent colors
