@@ -231,7 +231,7 @@ au BufRead,BufNewFile mix.lock set filetype=elixir
 "augroup END
 
 nmap <silent> XX :qa!<CR>
-
+nmap <silent> zz :suspend<CR>
 
 lua require('plug')
 "lua require('config.init')
