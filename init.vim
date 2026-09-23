@@ -114,6 +114,11 @@ set exrc
   nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \w :!open <cfile><CR>
   nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+
+" buffer browse
+  nnoremap <silent> <C-h> :bn<CR>
+  nnoremap <silent> <C-j> :bp<CR>
+
 lua << EOF
 
 EOF
