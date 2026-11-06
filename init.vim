@@ -5,6 +5,7 @@ function! Log(text)
   redir END
 endfunction
 
+
 " danger will robinson!
 set exrc
 
@@ -139,6 +140,9 @@ vim.keymap.set('n', 'q', function()
 end, { desc = 'Close floating window' })   
 EOL
 
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<TAB>"
+
+
 " ngrep browse results
   nnoremap <leader>n :cnext<CR>
   nnoremap <leader>b :cprev<CR>`
@@ -259,6 +263,7 @@ nmap <silent> XX :qa!<CR>
 nmap <silent> zz :suspend<CR>
 
 lua require('plug')
+lua require('autocompletetabardation')
 "lua require('config.init')
 
 autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=100}
