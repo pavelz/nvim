@@ -158,6 +158,7 @@ EOL
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
+
 function! s:UrlEncode(str) abort
   return substitute(a:str, '[^A-Za-z0-9_.~-]',
         \ '\=join(map(range(strlen(submatch(0))), {_, i -> printf("%%%02X", char2nr(submatch(0)[i]))}), "")',
@@ -170,8 +171,15 @@ function! s:GoogleSearch(text) abort
   redraw!
 endfunction
 
-nnoremap <silent> GG :call <SID>GoogleSearch(expand('<cWORD>'))<CR>
+function! s:HoogleSearch(text) abort
+  let l:url = 'https://hoogle.haskell.org/?hoogle=' . s:UrlEncode(a:text)
+  silent! execute '!open ' . shellescape(l:url, 1)
+  redraw!
+endfunction
 
+
+nnoremap <silent> GG :call <SID>GoogleSearch(expand('<cWORD>'))<CR>
+nnoremap <silent> HH :call <SID>HoogleSearch(expand('<cWORD>'))<CR>
 " folding
 set foldmethod=indent
 set foldnestmax=10
