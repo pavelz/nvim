@@ -158,7 +158,6 @@ EOL
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
-
 function! s:UrlEncode(str) abort
   return substitute(a:str, '[^A-Za-z0-9_.~-]',
         \ '\=join(map(range(strlen(submatch(0))), {_, i -> printf("%%%02X", char2nr(submatch(0)[i]))}), "")',
