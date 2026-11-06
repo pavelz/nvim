@@ -108,15 +108,14 @@ set exrc
 
 " Files
   nnoremap <leader>v :BufExplorer <CR>
-  nnoremap <leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
-  nnoremap <leader>G :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
+  "nnoremap <leader>g :Rg <C-r>=expand('<cword>')<CR><CR>
+  nnoremap <leader>g :Rg <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <leader>f :FZF -q <C-r>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
-  nnoremap <silent> \g :w !open https://google.com/search\?q\=<C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
   nnoremap <silent> \w :!open <cfile><CR>
   nnoremap <silent> \h :help <C-R>=escape(expand('<cWORD>'),'\\/.*$^~[]()')<CR><CR>
 
 " buffer browse
-  nnoremap <silent> <C-h> :bn<CR>
+  nnoremap <silent> <C-k> :bn<CR>
   nnoremap <silent> <C-j> :bp<CR>
 
 lua << EOF
@@ -159,6 +158,20 @@ EOL
   au VimEnter,SourcePost vim highlight Special guifg=#ff6666
   "colorscheme summerfruit256
   hi NonText guifg=black ctermfg=black
+
+function! s:UrlEncode(str) abort
+  return substitute(a:str, '[^A-Za-z0-9_.~-]',
+        \ '\=join(map(range(strlen(submatch(0))), {_, i -> printf("%%%02X", char2nr(submatch(0)[i]))}), "")',
+        \ 'g')
+endfunction
+
+function! s:GoogleSearch(text) abort
+  let l:url = 'https://google.com/search?q=' . s:UrlEncode(a:text)
+  silent! execute '!open ' . shellescape(l:url, 1)
+  redraw!
+endfunction
+
+nnoremap <silent> GG :call <SID>GoogleSearch(expand('<cWORD>'))<CR>
 
 " folding
 set foldmethod=indent
